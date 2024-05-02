@@ -1,0 +1,63 @@
+// SPDX-License-Identifier: GPL-2.0+
+
+#include "ASCN-M800.dts"
+
+/ {
+	/* LVDS */
+	lvds0_backlight: lvds0_backlight {
+		compatible = "pwm-backlight";
+		pwms = <&pwm3 0 20000 0>;
+		enable-gpios = <&gpio1 11 GPIO_ACTIVE_HIGH>;
+		post-pwm-on-delay-ms = <200>;
+		// pwm-off-delay-ms = <1000>;
+		status = "okay";
+
+		brightness-levels = < 0  1  2  3  4  5  6  7  8  9
+				     10 11 12 13 14 15 16 17 18 19
+				     20 21 22 23 24 25 26 27 28 29
+				     30 31 32 33 34 35 36 37 38 39
+				     40 41 42 43 44 45 46 47 48 49
+				     50 51 52 53 54 55 56 57 58 59
+				     60 61 62 63 64 65 66 67 68 69
+				     70 71 72 73 74 75 76 77 78 79
+				     80 81 82 83 84 85 86 87 88 89
+				     90 91 92 93 94 95 96 97 98 99
+				    100>;
+		default-brightness-level = <50>;
+	};
+
+	lvds0_panel {
+		compatible = "jdi,tx26d202vm0bwa", "panel-lvds";
+		backlight = <&lvds0_backlight>;
+		// power-supply = <&reg_lvds0_power>;
+		enable-gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+		/*
+		gpios = <&gpio1 13 GPIO_ACTIVE_HIGH>;
+		*/
+
+		port {
+			panel_lvds_in: endpoint {
+				remote-endpoint = <&lvds_out>;
+			};
+		};
+	};
+};
+/* LVDS */
+/delete-node/ &lvds_bridge;
+
+&ldb {
+	status = "okay";
+	fsl,dual-channel;
+
+	lvds-channel@0 {
+		/delete-node/ port@1;
+
+		port@1 {
+			reg = <1>;
+
+			lvds_out: endpoint {
+				remote-endpoint = <&panel_lvds_in>;
+			};
+		};
+	};
+};

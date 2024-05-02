@@ -116,6 +116,8 @@ imx8mp_ldb_encoder_atomic_mode_set(struct drm_encoder *encoder,
 	struct drm_display_mode *mode = &crtc_state->adjusted_mode;
 	unsigned long serial_clk;
 
+	dev_warn(ldb->dev,"%s: pixel clock is %d\n", __func__, mode->clock);
+
 	if (mode->clock > 160000) {
 		dev_warn(ldb->dev,
 			 "%s: mode exceeds 160 MHz pixel clock\n", __func__);
@@ -190,10 +192,18 @@ imx8mp_ldb_encoder_atomic_check(struct drm_encoder *encoder,
 	 * Due to limited video PLL frequency points on i.MX8mp,
 	 * we do mode fixup here in case any mode is unsupported.
 	 */
+	// #if 0
 	if (ldb->dual)
 		mode->clock = mode->clock > 100000 ? 148500 : 74250;
 	else
-		mode->clock = 74250;
+		mode->clock = 29400;
+		// mode->clock = 74250;
+	// #endif
+
+	// if (ldb->dual)
+	// 	mode->clock = mode->clock > 100000 ? 66000 : 29400;
+	// else
+	// 	mode->clock = 29400;
 
 	return 0;
 }
@@ -216,12 +226,23 @@ imx8mp_ldb_encoder_mode_valid(struct drm_encoder *encoder,
 	 * Due to limited video PLL frequency points on i.MX8mp,
 	 * we do mode valid check here.
 	 */
+	// #if 0
 	if (ldb->dual && mode->clock != 74250 && mode->clock != 148500)
 		return MODE_NOCLOCK;
 
-	if (!ldb->dual && mode->clock != 74250)
-		return MODE_NOCLOCK;
+	// if (!ldb->dual && mode->clock != 74250)
+	// 	return MODE_NOCLOCK;
 
+	// #else
+
+	// if (ldb->dual && mode->clock != 29400 && mode->clock != 66000)
+	// 	return MODE_NOCLOCK;
+
+	if (!ldb->dual && mode->clock != 29400)
+		return MODE_NOCLOCK;	
+
+
+	// #endif
 	return MODE_OK;
 }
 

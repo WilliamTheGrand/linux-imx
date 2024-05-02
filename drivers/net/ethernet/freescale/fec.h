@@ -554,6 +554,10 @@ struct fec_tx_buffer {
 	enum fec_txbuf_type type;
 };
 
+/* bd.cur points to the currently available buffer.
+ * pending_tx tracks the current buffer that is being sent by the
+ * controller.  When bd.cur and pending_tx are equal, nothing is pending.
+ */
 struct fec_enet_priv_tx_q {
 	struct bufdesc_prop bd;
 	unsigned char *tx_bounce[TX_RING_SIZE];
@@ -562,7 +566,7 @@ struct fec_enet_priv_tx_q {
 	unsigned short tx_stop_threshold;
 	unsigned short tx_wake_threshold;
 
-	struct bufdesc	*dirty_tx;
+	struct bufdesc	*pending_tx;
 	char *tso_hdrs;
 	dma_addr_t tso_hdrs_dma;
 };
@@ -586,13 +590,7 @@ struct fec_stop_mode_gpr {
 	u8 bit;
 };
 
-/* The FEC buffer descriptors track the ring buffers.  The rx_bd_base and
- * tx_bd_base always point to the base of the buffer descriptors.  The
- * cur_rx and cur_tx point to the currently available buffer.
- * The dirty_tx tracks the current buffer that is being sent by the
- * controller.  The cur_tx and dirty_tx are equal under both completely
- * empty and completely full conditions.  The empty/ready indicator in
- * the buffer descriptor determines the actual condition.
+/* The FEC buffer descriptors track the ring buffers.
  */
 struct fec_enet_private {
 	/* Hardware registers of the FEC device */
@@ -618,6 +616,7 @@ struct fec_enet_private {
 
 	unsigned int total_tx_ring_size;
 	unsigned int total_rx_ring_size;
+	uint	events;
 
 	struct	platform_device *pdev;
 
@@ -632,6 +631,7 @@ struct fec_enet_private {
 	bool	rgmii_rxc_dly;
 	bool	rpm_active;
 	bool	mii_bus_share;
+	bool	napi_disabling;
 	int	link;
 	int	full_duplex;
 	int	speed;
@@ -695,6 +695,12 @@ struct fec_enet_private {
 	/* XDP BPF Program */
 	struct bpf_prog *xdp_prog;
 
+	struct gpio_desc *gd_mdc;
+	struct gpio_desc *gd_mdio;
+	struct pinctrl *pinctrl;
+	struct pinctrl_state *pins_fec;
+	struct pinctrl_state *pins_gpio;
+	int pins_fec_selected;
 	u64 ethtool_stats[];
 };
 

@@ -359,6 +359,7 @@ static void imx8m_phy_tune(struct imx8mq_usb_phy *imx_phy)
 		writel(value, imx_phy->base + PHY_CTRL5);
 	}
 
+	imx_phy->tx_vboost_level = 0x2;
 	if ((imx_phy->tx_vref_tune & imx_phy->tx_rise_tune &
 	     imx_phy->tx_preemp_amp_tune & imx_phy->comp_dis_tune &
 	     imx_phy->tx_vboost_level) == PHY_TUNE_DEFAULT)

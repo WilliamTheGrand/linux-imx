@@ -2363,15 +2363,40 @@ static const struct panel_desc innolux_zj070na_01p = {
 };
 
 static const struct display_timing jdi_tx26d202vm0bwa_timing = {
+	#if 1
 	.pixelclock = { 151820000, 156720000, 159780000 },
 	.hactive = { 1920, 1920, 1920 },
 	.hfront_porch = { 76, 100, 112 },
 	.hback_porch = { 74, 100, 112 },
 	.hsync_len = { 30, 30, 30 },
-	.vactive = { 1200, 1200, 1200},
+	.vactive = { 1080, 1080, 1080},
 	.vfront_porch = { 3, 5, 10 },
 	.vback_porch = { 2, 5, 10 },
 	.vsync_len = { 5, 5, 5 },
+#endif
+
+#if 0
+	.clock = 33260,
+	.hdisplay = 800,
+	.hsync_start = 800 + 40,
+	.hsync_end = 800 + 40 + 128,
+	.htotal = 800 + 40 + 128 + 88,
+	.vdisplay = 480,
+	.vsync_start = 480 + 10,
+	.vsync_end = 480 + 10 + 2,
+	.vtotal = 480 + 10 + 2 + 33,
+#endif
+#if 0
+	.pixelclock = 33260,
+	.hactive = 800,
+	.hfront_porch = 40,
+	.hback_porch = 128,
+	.hsync_len = 88,
+	.vactive = 480,
+	.vfront_porch = 10,
+	.vback_porch = 2,
+	.vsync_len = 33,
+#endif
 	.flags = DISPLAY_FLAGS_DE_HIGH,
 };
 
@@ -2390,10 +2415,10 @@ static const struct panel_desc jdi_tx26d202vm0bwa = {
 		 * long in pratice.  Based on tests, it turns
 		 * out 100 milliseconds is fine.
 		 */
-		.prepare = 100,
-		.enable = 100,
-		.unprepare = 100,
-		.disable = 100,
+		.prepare = 33,
+		.enable = 0,
+		.unprepare = 0,
+		.disable = 200,
 	},
 	.bus_format = MEDIA_BUS_FMT_RGB888_1X7X4_SPWG,
 	.bus_flags = DRM_BUS_FLAG_DE_HIGH,
@@ -3808,6 +3833,49 @@ static const struct panel_desc tpk_f07a_0102 = {
 	.bus_flags = DRM_BUS_FLAG_PIXDATA_DRIVE_POSEDGE,
 };
 
+
+static const struct drm_display_mode tpk_f07a01022_mode = {
+	.clock = 33260,
+	.hdisplay = 800,
+	.hsync_start = 800 + 40,
+	.hsync_end = 800 + 40 + 128,
+	.htotal = 800 + 40 + 128 + 88,
+	.vdisplay = 480,
+	.vsync_start = 480 + 10,
+	.vsync_end = 480 + 10 + 2,
+	.vtotal = 480 + 10 + 2 + 33,
+	.flags = DISPLAY_FLAGS_DE_HIGH,
+};
+
+static const struct panel_desc tpk_f07a01022 = {
+	.modes = &tpk_f07a01022_mode,
+/*
+	.num_modes = 1,
+*/
+	.num_timings = 1,
+	.bpc = 8,
+	.size = {
+		.width = 152,
+		.height = 91,
+	},
+	.delay = {
+		/*
+		 * The panel spec recommends one second delay
+		 * to the below items.  However, it's a bit too
+		 * long in pratice.  Based on tests, it turns
+		 * out 100 milliseconds is fine.
+		 */
+		.prepare = 100,
+		.enable = 100,
+		.unprepare = 100,
+		.disable = 100,
+	},
+	.bus_format = MEDIA_BUS_FMT_RGB888_1X7X4_JEIDA,
+	.bus_flags = DRM_BUS_FLAG_DE_HIGH,
+	.connector_type = DRM_MODE_CONNECTOR_LVDS,
+};
+
+
 static const struct drm_display_mode tpk_f10a_0102_mode = {
 	.clock = 45000,
 	.hdisplay = 1024,
@@ -4356,7 +4424,10 @@ static const struct of_device_id platform_of_match[] = {
 	}, {
 		.compatible = "tpk,f07a-0102",
 		.data = &tpk_f07a_0102,
-	}, {
+	},{
+		.compatible = "tpk,f07a01022",
+		.data = &tpk_f07a01022,
+	},{
 		.compatible = "tpk,f10a-0102",
 		.data = &tpk_f10a_0102,
 	}, {
