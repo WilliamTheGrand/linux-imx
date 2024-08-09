@@ -1,0 +1,64 @@
+config VIDEO_INNO_EV2M_GOM1
+	tristate "Innodisk EV2M_GOM1 camera sensor support"
+	depends on GPIOLIB && VIDEO_DEV && I2C
+	select MEDIA_CONTROLLER
+	select VIDEO_V4L2_SUBDEV_API
+	select V4L2_FWNODE
+	help
+	This is a Video4Linux2 sensor-level driver for the Innodisk
+	EV2M_GOM1 camera sensor
+
+	To compile this driver as a module, choose M here: the module
+	will be called Innodisk EV2M_GOM1.
+
+config VIDEO_INNO_EV2M_OOM1
+	tristate "Innodisk EV2M_OOM1 camera sensor support"
+	depends on GPIOLIB && VIDEO_DEV && I2C
+	select MEDIA_CONTROLLER
+	select VIDEO_V4L2_SUBDEV_API
+	select V4L2_FWNODE
+	help
+	This is a Video4Linux2 sensor-level driver for the Innodisk
+	EV2M_OOM1 camera sensor
+
+	To compile this driver as a module, choose M here: the module
+	will be called Innodisk EV2M_OOM1.
+
+config VIDEO_INNO_EVDM_OOM1
+	tristate "Innodisk EVDM_OOM1 camera sensor support"
+	depends on GPIOLIB && VIDEO_DEV && I2C
+	select MEDIA_CONTROLLER
+	select VIDEO_V4L2_SUBDEV_API
+	select V4L2_FWNODE
+	help
+	This is a Video4Linux2 sensor-level driver for the Innodisk
+	EVDM_OOM1 camera sensor
+
+	To compile this driver as a module, choose M here: the module
+	will be called Innodisk EVDM_OOM1.
+
+config VIDEO_INNO_EV2M_OOM2
+	tristate "Innodisk EV2M_OOM2 camera sensor support"
+	depends on GPIOLIB && VIDEO_DEV && I2C
+	select MEDIA_CONTROLLER
+	select VIDEO_V4L2_SUBDEV_API
+	select V4L2_FWNODE
+	help
+	This is a Video4Linux2 sensor-level driver for the Innodisk
+	EV2M_OOM2 camera sensor
+
+	To compile this driver as a module, choose M here: the module
+	will be called Innodisk EV2M_OOM2.
+
+config VIDEO_INNO_EV8M_OOM1
+	tristate "Innodisk EV8M_OOM1 camera sensor support"
+	depends on GPIOLIB && VIDEO_DEV && I2C
+	select MEDIA_CONTROLLER
+	select VIDEO_V4L2_SUBDEV_API
+	select V4L2_FWNODE
+	help
+	This is a Video4Linux2 sensor-level driver for the Innodisk
+	EV8M_OOM1 camera sensor
+
+	To compile this driver as a module, choose M here: the module
+	will be called Innodisk EV8M_OOM1.

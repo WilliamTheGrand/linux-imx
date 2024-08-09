@@ -2,6 +2,11 @@
 
 msp3400-objs	:=	msp3400-driver.o msp3400-kthreads.o
 
+obj-$(CONFIG_VIDEO_INNO_EV2M_GOM1) += Innodisk/
+obj-$(CONFIG_VIDEO_INNO_EV2M_OOM1) += Innodisk/
+obj-$(CONFIG_VIDEO_INNO_EVDM_OOM1) += Innodisk/
+obj-$(CONFIG_VIDEO_INNO_EV8M_OOM1) += Innodisk/
+obj-$(CONFIG_VIDEO_INNO_EV2M_OOM2) += Innodisk/
 obj-$(CONFIG_SDR_MAX2175) += max2175.o
 obj-$(CONFIG_VIDEO_AD5820) += ad5820.o
 obj-$(CONFIG_VIDEO_AD9389B) += ad9389b.o
