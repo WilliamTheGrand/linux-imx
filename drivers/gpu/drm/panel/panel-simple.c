@@ -2366,15 +2366,40 @@ static const struct panel_desc innolux_zj070na_01p = {
 };
 
 static const struct display_timing jdi_tx26d202vm0bwa_timing = {
+	#if 1
 	.pixelclock = { 151820000, 156720000, 159780000 },
 	.hactive = { 1920, 1920, 1920 },
 	.hfront_porch = { 76, 100, 112 },
 	.hback_porch = { 74, 100, 112 },
 	.hsync_len = { 30, 30, 30 },
-	.vactive = { 1200, 1200, 1200},
+	.vactive = { 1080, 1080, 1080},
 	.vfront_porch = { 3, 5, 10 },
 	.vback_porch = { 2, 5, 10 },
 	.vsync_len = { 5, 5, 5 },
+#endif
+
+#if 0
+	.clock = 33260,
+    .hdisplay = 800,
+    .hsync_start = 800 + 40,
+    .hsync_end = 800 + 40 + 128,
+    .htotal = 800 + 40 + 128 + 88,
+    .vdisplay = 480,
+    .vsync_start = 480 + 10,
+    .vsync_end = 480 + 10 + 2,
+    .vtotal = 480 + 10 + 2 + 33,
+#endif
+#if 0
+	.pixelclock = 33260,
+	.hactive = 800,
+	.hfront_porch = 40,
+	.hback_porch = 128,
+	.hsync_len = 88,
+	.vactive = 480,
+	.vfront_porch = 10,
+	.vback_porch = 2,
+	.vsync_len = 33,
+#endif
 	.flags = DISPLAY_FLAGS_DE_HIGH,
 };
 

@@ -35,6 +35,7 @@ properties:
           - enum:
               - issi,is25lp016d
               - micron,mt25qu02g
+              - mxicy,mx25r2035f
               - mxicy,mx25r1635f
               - mxicy,mx25u6435f
               - mxicy,mx25v8035f

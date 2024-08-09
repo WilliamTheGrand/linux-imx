@@ -416,6 +416,11 @@ static int rtl8211f_config_init(struct phy_device *phydev)
 		}
 	}
 
+	phy_write(phydev, 0x1f, 0x0D04);
+	phy_write(phydev, 0x10, 0x6D02);
+	phy_write(phydev, 0x11, 0x0000);
+	phy_write(phydev, 0x1f, 0x0000);
+
 	return genphy_soft_reset(phydev);
 }
 
