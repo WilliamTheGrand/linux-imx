@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+
+/* Title:    Device Tree of Innodisk Camera Module
+ * Author:   Marlboro Hsieh
+ * Created:  Jan.20.2024, 15:06:37 (UTC+8)
+ * Modified: Jul.02.2024, 15:06:37 (UTC+8)
+ */
+
+// ------------------------
+//  Innodisk Camera Module
+// ------------------------
+#define INNO_EV2M_GOM1		0 // 1: Enabled, 0: Disabled (Innodisk EV2M-GOM1)
+#define INNO_EV2M_OOM1		0 // 1: Enabled, 0: Disabled (Innodisk EV2M-OOM1)
+#define INNO_EVDM_OOM1		0 // 1: Enabled, 0: Disabled (Innodisk EVDM-OOM1)
+#define INNO_EV2M_OOM2		0 // 1: Enabled, 0: Disabled (Innodisk EV2M-OOM2)
+#define INNO_EV8M_OOM1		1 // 1: Enabled, 0: Disabled (Innodisk EV8M-OOM1)

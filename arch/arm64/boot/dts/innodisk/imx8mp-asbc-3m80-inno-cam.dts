@@ -1,0 +1,237 @@
+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
+
+/* Title:    Device Tree of Innodisk Camera Module
+ * Author:   Marlboro Hsieh
+ * Created:  Jan.20.2024, 15:06:37 (UTC+8)
+ * Modified: Jul.02.2024, 15:06:37 (UTC+8)
+ */
+
+#include "imx8mp-asbc-3m80.dts"
+#include "inno-cam_config/imx8mp-asbc-3m80-inno-cam_config.dts"
+
+#if INNO_EV2M_GOM1 == 1
+#define INNO_CAM_NODE_LABEL_0	EV2M_GOM1_0
+#define INNO_CAM_NODE_LABEL_1	EV2M_GOM1_1
+#define INNO_CAM_NODE		EV2M_GOM1@08
+#define INNO_CAM_CLK_FREQ	<400000>
+#define INNO_CAM_COMPATIBLE	"inno,ev2m-gom1"
+#define INNO_CAM_SENSOR_MODEL	"EV2M_GOM1"
+#define INNO_CAM_IO_EXP_ADDR	<0xff>
+#define INNO_CAM_MCLK_KHZ	<24000000>
+#define INNO_CAM_SLAVE_ADDR	<0x08>
+#define INNO_CAM_NODE_EP_0	EV2M_GOM1_ep_0
+#define INNO_CAM_NODE_EP_1	EV2M_GOM1_ep_1
+#define INNO_CAM_DAT_LANES	<1 2>
+#define INNO_CAM_CLK_LANES	<0>
+#define INNO_CAM_NODE_REM_EP_0	<&EV2M_GOM1_ep_0>
+#define INNO_CAM_NODE_REM_EP_1	<&EV2M_GOM1_ep_1>
+#define INNO_CAM_DAT_LANE_NUM	<2>
+#endif
+#if INNO_EV2M_OOM1 == 1
+#define INNO_CAM_NODE_LABEL_0	EV2M_OOM1_0
+#define INNO_CAM_NODE_LABEL_1	EV2M_OOM1_1
+#define INNO_CAM_NODE		EV2M_OOM1@3d
+#define INNO_CAM_CLK_FREQ	<400000>
+#define INNO_CAM_COMPATIBLE	"inno,ev2m-oom1"
+#define INNO_CAM_SENSOR_MODEL	"EV2M_OOM1"
+#define INNO_CAM_IO_EXP_ADDR	<0x41>
+#define INNO_CAM_MCLK_KHZ	<48000000>
+#define INNO_CAM_SLAVE_ADDR	<0x3d>
+#define INNO_CAM_NODE_EP_0	EV2M_OOM1_ep_0
+#define INNO_CAM_NODE_EP_1	EV2M_OOM1_ep_1
+#define INNO_CAM_DAT_LANES	<1 2>
+#define INNO_CAM_CLK_LANES	<0>
+#define INNO_CAM_NODE_REM_EP_0	<&EV2M_OOM1_ep_0>
+#define INNO_CAM_NODE_REM_EP_1	<&EV2M_OOM1_ep_1>
+#define INNO_CAM_DAT_LANE_NUM	<2>
+#endif
+#if INNO_EVDM_OOM1 == 1
+#define INNO_CAM_NODE_LABEL_0	EVDM_OOM1_0
+#define INNO_CAM_NODE_LABEL_1	EVDM_OOM1_1
+#define INNO_CAM_NODE		EVDM_OOM1@3d
+#define INNO_CAM_CLK_FREQ	<400000>
+#define INNO_CAM_COMPATIBLE	"inno,evdm-oom1"
+#define INNO_CAM_SENSOR_MODEL	"EVDM_OOM1"
+#define INNO_CAM_IO_EXP_ADDR	<0xff>
+#define INNO_CAM_MCLK_KHZ	<48000000>
+#define INNO_CAM_SLAVE_ADDR	<0x3d>
+#define INNO_CAM_NODE_EP_0	EVDM_OOM1_ep_0
+#define INNO_CAM_NODE_EP_1	EVDM_OOM1_ep_1
+#define INNO_CAM_DAT_LANES	<1 2 3 4>
+#define INNO_CAM_CLK_LANES	<0>
+#define INNO_CAM_NODE_REM_EP_0	<&EVDM_OOM1_ep_0>
+#define INNO_CAM_NODE_REM_EP_1	<&EVDM_OOM1_ep_1>
+#define INNO_CAM_DAT_LANE_NUM	<4>
+#endif
+#if INNO_EV2M_OOM2 == 1
+#define INNO_CAM_NODE_LABEL_0	EV2M_OOM2_0
+#define INNO_CAM_NODE_LABEL_1	EV2M_OOM2_1
+#define INNO_CAM_NODE		EV2M_OOM2@3d
+#define INNO_CAM_CLK_FREQ	<400000>
+#define INNO_CAM_COMPATIBLE	"inno,ev2m-oom2"
+#define INNO_CAM_SENSOR_MODEL	"EV2M_OOM2"
+#define INNO_CAM_IO_EXP_ADDR	<0x41>
+#define INNO_CAM_MCLK_KHZ	<48000000>
+#define INNO_CAM_SLAVE_ADDR	<0x3d>
+#define INNO_CAM_NODE_EP_0	EV2M_OOM2_ep_0
+#define INNO_CAM_NODE_EP_1	EV2M_OOM2_ep_1
+#define INNO_CAM_DAT_LANES	<1 2 3 4>
+#define INNO_CAM_CLK_LANES	<0>
+#define INNO_CAM_NODE_REM_EP_0	<&EV2M_OOM2_ep_0>
+#define INNO_CAM_NODE_REM_EP_1	<&EV2M_OOM2_ep_1>
+#define INNO_CAM_DAT_LANE_NUM	<4>
+#endif
+#if INNO_EV8M_OOM1 == 1
+#define INNO_CAM_NODE_LABEL_0	EV8M_OOM1_0
+#define INNO_CAM_NODE_LABEL_1	EV8M_OOM1_1
+#define INNO_CAM_NODE		EV8M_OOM1@3d
+#define INNO_CAM_CLK_FREQ	<400000>
+#define INNO_CAM_COMPATIBLE	"inno,ev8m-oom1"
+#define INNO_CAM_SENSOR_MODEL	"EV8M_OOM1"
+#define INNO_CAM_IO_EXP_ADDR	<0x41>
+#define INNO_CAM_MCLK_KHZ	<48000000>
+#define INNO_CAM_SLAVE_ADDR	<0x3d>
+#define INNO_CAM_NODE_EP_0	EV8M_OOM1_ep_0
+#define INNO_CAM_NODE_EP_1	EV8M_OOM1_ep_1
+#define INNO_CAM_DAT_LANES	<1 2 3 4>
+#define INNO_CAM_CLK_LANES	<0>
+#define INNO_CAM_NODE_REM_EP_0	<&EV8M_OOM1_ep_0>
+#define INNO_CAM_NODE_REM_EP_1	<&EV8M_OOM1_ep_1>
+#define INNO_CAM_DAT_LANE_NUM	<4>
+#endif
+
+&i2c2 {
+	clock-frequency = INNO_CAM_CLK_FREQ;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_i2c2>;
+	status = "okay";
+
+	INNO_CAM_NODE_LABEL_0: INNO_CAM_NODE {
+		compatible = INNO_CAM_COMPATIBLE;
+		reg = INNO_CAM_SLAVE_ADDR;
+		sensor_model = INNO_CAM_SENSOR_MODEL;
+		io-exp-addr = INNO_CAM_IO_EXP_ADDR;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_csi0_pwn>, <&pinctrl_csi0_rst>;
+		clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO2>;
+		clock-names = "xclk";
+		assigned-clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO2>;
+		assigned-clock-parents = <&clk IMX8MP_CLK_24M>;
+		assigned-clock-rates = INNO_CAM_MCLK_KHZ;
+		csi_id = <0>;
+		isp_en = <&gpio4 18 GPIO_ACTIVE_LOW>;
+		reset = <&gpio4 19 GPIO_ACTIVE_LOW>;
+		mclk = INNO_CAM_MCLK_KHZ;
+		mclk_source = <0>;
+		mipi_csi;
+		status = "okay";
+
+		port {
+			INNO_CAM_NODE_EP_0: endpoint {
+				remote-endpoint = <&mipi_csi0_ep>;
+				data-lanes = INNO_CAM_DAT_LANES;
+				clock-lanes = INNO_CAM_CLK_LANES;
+			};
+		};
+	};
+};
+
+&i2c3 {
+	clock-frequency = INNO_CAM_CLK_FREQ;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_i2c3>;
+	status = "okay";
+
+	INNO_CAM_NODE_LABEL_1: INNO_CAM_NODE {
+		compatible = INNO_CAM_COMPATIBLE;
+		reg = INNO_CAM_SLAVE_ADDR;
+		sensor_model = INNO_CAM_SENSOR_MODEL;
+		io-exp-addr = INNO_CAM_IO_EXP_ADDR;
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_csi1_pwn>, <&pinctrl_csi1_rst>;
+		clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO2>;
+		clock-names = "xclk";
+		assigned-clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO2>;
+		assigned-clock-parents = <&clk IMX8MP_CLK_24M>;
+		assigned-clock-rates = INNO_CAM_MCLK_KHZ;
+		csi_id = <0>;
+		isp_en = <&gpio4 28 GPIO_ACTIVE_LOW>;
+		reset = <&gpio4 29 GPIO_ACTIVE_LOW>;
+		mclk = INNO_CAM_MCLK_KHZ;
+		mclk_source = <0>;
+		mipi_csi;
+		status = "okay";
+
+		port {
+			INNO_CAM_NODE_EP_1: endpoint {
+				remote-endpoint = <&mipi_csi1_ep>;
+				data-lanes = INNO_CAM_DAT_LANES;
+				clock-lanes = INNO_CAM_CLK_LANES;
+			};
+		};
+	};
+};
+
+&mipi_csi_0 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+
+	port@0 {
+		reg = <0>;
+
+		mipi_csi0_ep: endpoint {
+			remote-endpoint = INNO_CAM_NODE_REM_EP_0;
+			data-lanes = INNO_CAM_DAT_LANE_NUM;
+			csis-hs-settle = <11>;
+			csis-clk-settle = <2>;
+			csis-wclk;
+		};
+	};
+};
+
+&mipi_csi_1 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+	status = "okay";
+
+	port@1 {
+		reg = <1>;
+
+		mipi_csi1_ep: endpoint {
+			remote-endpoint = INNO_CAM_NODE_REM_EP_1;
+			data-lanes = INNO_CAM_DAT_LANE_NUM;
+			csis-hs-settle = <11>;
+			csis-clk-settle = <2>;
+			csis-wclk;
+		};
+	};
+};
+
+&cameradev {
+	status = "okay";
+};
+
+&isi_0 {
+	status = "okay";
+
+	cap_device {
+		status = "okay";
+	};
+
+	m2m_device {
+		status = "okay";
+	};
+};
+
+&isi_1 {
+	status = "okay";
+
+	cap_device {
+		status = "okay";
+	};
+
+	m2m_device {
+		status = "okay";
+	};
+};
